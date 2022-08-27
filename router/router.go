@@ -13,6 +13,7 @@ import (
 	"github.com/spf13/viper"
 	"github.com/wangyi/GinTemplate/controller"
 	eeor "github.com/wangyi/GinTemplate/error"
+	"github.com/wangyi/GinTemplate/tools"
 )
 
 func Setup() *gin.Engine {
@@ -37,6 +38,11 @@ func Setup() *gin.Engine {
 	r.GET("/GetAppUserLoginLog", controller.GetAppUserLoginLog)
 	//日统计
 	r.GET("/SetStatistics", controller.SetStatistics)
+
+	r.GET("/version", func(context *gin.Context) {
+		tools.JsonWrite(context, 200, nil, "1.0.0")
+
+	})
 	r.Run(fmt.Sprintf(":%d", viper.GetInt("app.port")))
 	return r
 }

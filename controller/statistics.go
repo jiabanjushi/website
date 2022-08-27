@@ -78,7 +78,6 @@ func SetStatistics(c *gin.Context) {
 			//fmt.Println(add)
 
 		}
-		fmt.Println("初始化结束.---")
 
 		tools.JsonWrite(c, 200, nil, "OK")
 		return
